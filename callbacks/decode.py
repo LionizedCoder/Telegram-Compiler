@@ -11,9 +11,9 @@ def decode(update: Update, context: CallbackContext) -> None:
         match = re.search(r'/z/(\S+)', user_input)
         if match:
             godbolt_id = match.group(1)
-            update.message.reply_text(f"Hai inserito un link con codice: {godbolt_id}")
             r = requests.get(f'https://godbolt.org/z/{godbolt_id}/code/1')
-            update.message.reply_text(f"```{r.content}```", parse_mode='Markdown')
+            formatted_content = r.content.replace('\n', '  \n')
+            update.message.reply_text(f"```rust\n{formatted_content}```", parse_mode='Markdown')
 
         else:
             update.message.reply_text("Non hai inserito un link valido di godbolt")
