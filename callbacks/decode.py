@@ -12,7 +12,8 @@ def decode(update: Update, context: CallbackContext) -> None:
         if match:
             godbolt_id = match.group(1)
             r = requests.get(f'https://godbolt.org/z/{godbolt_id}/code/1')
-            formatted_content = "```rust\n" + r.content.replace('\n', '  \n') + "```"
+            content =  r.content.decode('utf-8')
+            formatted_content = "```rust\n" + content.replace('\n', '  \n') + "```"
             update.message.reply_text(formatted_content, parse_mode='Markdown')
 
         else:
