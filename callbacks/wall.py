@@ -2,6 +2,7 @@ import requests
 from telegram import Update
 from telegram.ext import CallbackContext
 from utils.constant import payload
+import re
 
 def wall(update: Update, context: CallbackContext) -> None:
     user_input = ' '.join(context.args)
@@ -10,7 +11,7 @@ def wall(update: Update, context: CallbackContext) -> None:
         headers = {"Content-Type": "text/plain"})
         if r.status_code == 200:
             assembly = r.text
-            update.message.reply_text(assembly)
+            update.message.reply_text(re.sub('# Compilation provided by Compiler Explorer at https://godbolt.org/',"",assembly))
         else:
             update.message.reply_text("La richiesta non è andata a buon fine, riprova.")
     else:
