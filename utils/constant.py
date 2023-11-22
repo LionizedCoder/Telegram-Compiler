@@ -23,8 +23,16 @@ payload = {
     }
 
 formatted_payload = {
-    "source": "",
+    "source": '',
     "base": "Rust",
     "useSpaces": False,
     "tabWidth": 4
+}
+
+headers = {
+    'Content-Type': 'application/json',
+    'Connection' : 'keep-alive',
+    'Accept-Encoding' : 'gzip, deflate, br',
+    'Accept' : '*/*',
+    'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15'
 }

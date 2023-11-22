@@ -2,8 +2,9 @@ import requests
 from telegram import Update
 from telegram.ext import CallbackContext
 from utils.constant import payload
+import json
 
-def compile(update: Update, context: CallbackContext):
+def compile(update: Update, context: CallbackContext) -> None:
     user_input = ''.join(context.args)
     if user_input != "":
         text = "Stai compilando questo codice:\n" + f"```rust\n{user_input}```"
