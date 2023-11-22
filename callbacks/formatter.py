@@ -3,10 +3,6 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from utils.constant import formatted_payload, headers
 import json
-import logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.DEBUG)
-logger = logging.getLogger(__name__)
 
 def formatted(update: Update, context: CallbackContext) -> None:
     user_input = ' '.join(context.args)
