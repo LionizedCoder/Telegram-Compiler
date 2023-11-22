@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 def formatted(update: Update, context: CallbackContext) -> None:
     user_input = ' '.join(context.args)
-    if user_input != " ":
+    if user_input != "":
         formatted_payload['source'] = f'{user_input}'
         r = requests.post("https://godbolt.org/api/format/rustfmt", json = formatted_payload, headers= headers)
         try:

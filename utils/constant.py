@@ -2,11 +2,14 @@ import os
 
 token = os.environ['TOKEN']
 payload = {
-        "source": "",
+        "source": '',
           "compiler": "r1730",
         "options": {
             "userArguments": "",
-            "compilerOptions": {},
+            "compilerOptions": {
+                "skipAsm": True,
+                "executorRequest": True
+            },
             "filters": {
                 "intel": False,
             },
