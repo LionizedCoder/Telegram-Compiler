@@ -13,7 +13,10 @@ def compile(update: Update, context: CallbackContext) -> None:
         result = r.json()
         if result['code'] == 0: 
             output = result['stdout'][0]['text']
-            update.message.reply_text(f"✅ L'Output del tuo codice è:\n```{output}```", parse_mode='Markdown')
+            if output == "":
+                update.message.reply_text(f"✅ Il tuo codice ha compilato correttamente ma non ha prodotto un output!")
+            else:
+                update.message.reply_text(f"✅ L'Output del tuo codice è:\n```{output}```", parse_mode='Markdown')
         else:
             update.message.reply_text("❌ Errore di compilazione... La gestione dell'errore verrà implementata a breve")
     else:
