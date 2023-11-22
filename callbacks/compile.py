@@ -3,7 +3,7 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from utils.constant import payload
 
-def compile(update: Update, context: CallbackContext) -> int:
+def compile(update: Update, context: CallbackContext):
     user_input = ''.join(context.args)
     if user_input != "":
         text = "Stai compilando questo codice:\n" + f"```rust\n{user_input}```"

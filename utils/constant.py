@@ -21,3 +21,10 @@ payload = {
         "bypassCache": False,
         "allowStoreCodeDebug": True
     }
+
+formatted_payload = {
+    "source": "",
+    "base": "Rust",
+    "useSpaces": False,
+    "tabWidth": 4
+}
