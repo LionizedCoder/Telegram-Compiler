@@ -9,9 +9,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 def formatted(update: Update, context: CallbackContext) -> None:
-    user_input = ''.join(context.args)
-    if user_input != "":
+    user_input = ' '.join(context.args)
+    if user_input != " ":
         formatted_payload['source'] = f'{user_input}'
+        logger.debug(formatted_payload['source'])
+        logger.debug(formatted_payload)
         r = requests.post("https://godbolt.org/api/format/rustfmt", json = formatted_payload, headers= headers)
         try:
             data = r.json()
