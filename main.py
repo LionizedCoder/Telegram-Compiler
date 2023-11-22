@@ -6,6 +6,7 @@ from callbacks.start import start
 from callbacks.decode import decode
 from callbacks.compile import compile
 from callbacks.formatter import formatted
+from callbacks.wall import wall
 
 #Set Log
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -30,6 +31,8 @@ if __name__ == '__main__':
         'decode', decode, filters=Filters.text))
     dispatcher.add_handler(CommandHandler(
         'format', formatted, filters=Filters.text))
+    dispatcher.add_handler(CommandHandler(
+        'wall', wall, filters=Filters.text))
     #updater.start_polling()
     updater.start_webhook(listen="0.0.0.0", webhook_url=f'https://compiler-bot-test.onrender.com/' + token, url_path=token, port=int(5000))
     updater.idle()
