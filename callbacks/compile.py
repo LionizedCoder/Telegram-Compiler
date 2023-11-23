@@ -17,8 +17,8 @@ def compile(update: Update, context: CallbackContext) -> None:
         keyboard = [[InlineKeyboardButton("Assembly", callback_data='new_message_clicked')]]
         reply_markup = InlineKeyboardMarkup(keyboard)
         if result['code'] == 0: 
-            output = result['stdout'][0]['text']
-            if output:
+            if result['stdout'] and result['stdout'][0]['text']:
+                output = result['stdout'][0]['text']
                 update.message.reply_text(f"✅ L'Output del tuo codice è:\n```\n{output}```", parse_mode='Markdown', reply_markup=reply_markup)
             else:
                 update.message.reply_text(f"✅ Il tuo codice ha compilato correttamente ma non ha prodotto un output!", reply_markup=reply_markup)
